@@ -1,3 +1,9 @@
+# Project Description & Reconstruction Guide
+
+This project follows a **three-stage design flow**, starting with algorithm development in HLS, moving to RTL-level verification, and finally integrating into a complete Zynq-based system.
+
+## 📂 Project Structure
+```text
 Project_Root/
 │
 ├── 1_HLS_Source/                       # PRNG core design in C++ (Vivado HLS)
@@ -44,42 +50,47 @@ Project_Root/
 │   └── prng_generator_csynth.rpt
 │
 └── Readme.txt                           # Basic text info about the project
+```
 
 ---
 
-Project Description & Reconstruction Guide
-
-This project follows a three-stage design flow, starting with algorithm development in HLS, moving to RTL-level verification, and finally integrating into a complete Zynq-based system.
-
-1. 1_HLS_Source/ — PRNG Core Design in C++ with Vivado HLS
+## 1️⃣ `1_HLS_Source/` — PRNG Core Design in C++ with Vivado HLS
 Contains C++ source code for the chaos-based PRNG algorithm, HLS synthesis & cosimulation report images, and a C++ testbench for software-level verification.
 
-Reconstruction:
+**Reconstruction:**
 1. Open Vivado HLS and create a new project.
-2. Add files from src/ and tb/.
-3. Run C Simulation, C Synthesis, and Cosimulation.
-4. Once verified, Export RTL for the next stage.
+2. Add files from `src/` and `tb/`.
+3. Run **C Simulation**, **C Synthesis**, and **Cosimulation**.
+4. Once verified, **Export RTL** for the next stage.
 
-2. 2_RTL_Verification/ — RTL Simulation in Vivado
-Contains Verilog RTL generated from HLS, AXI control logic, waveform images from Vivado behavioral simulation, and a Verilog testbench to verify signal behavior (TVALID, TLAST, etc.).
+---
 
-Reconstruction:
+## 2️⃣ `2_RTL_Verification/` — RTL Simulation in Vivado
+Contains Verilog RTL generated from HLS, AXI control logic, waveform images from Vivado behavioral simulation, and a Verilog testbench to verify signal behavior (`TVALID`, `TLAST`, etc.).
+
+**Reconstruction:**
 1. Open Vivado and create a new RTL project.
-2. Add src/ files as Design Sources and tb/test_bench.v as a Simulation Source.
-3. Run Behavioral Simulation and compare results with images in images/.
+2. Add `src/` files as Design Sources and `tb/test_bench.v` as a Simulation Source.
+3. Run **Behavioral Simulation** and compare results with images in `images/`.
 
-3. 3_System_Integration/ — Zynq-Based System Integration
-Includes the Vivado block design (.bd), system diagram images, post-implementation summary, and the IP repository containing the packaged PRNG IP from Vivado HLS for reuse.
+---
 
-Reconstruction:
+## 3️⃣ `3_System_Integration/` — Zynq-Based System Integration
+Includes the Vivado block design (`.bd`), system diagram images, post-implementation summary, and the IP repository containing the packaged PRNG IP from Vivado HLS for reuse.
+
+**Reconstruction:**
 1. Open Vivado and create a new Zynq project.
-2. Add the ip_repo/ path in Settings → IP → Repository to make the custom IP available.
-3. Import design_L1.bd from block_design/.
-4. Regenerate the block design and run Synthesis and Implementation.
+2. Add the `ip_repo/` path in **Settings → IP → Repository** to make the custom IP available.
+3. Import `design_L1.bd` from `block_design/`.
+4. Regenerate the block design and run **Synthesis** and **Implementation**.
 
-4. reports/ — Final Reports
-Contains post-route timing analysis, FPGA resource utilization, and the HLS synthesis report for the PRNG core.
+---
+
+## 4️⃣ `reports/` — Final Reports
+Contains post-route timing analysis, FPGA resource utilization, and the HLS synthesis report for the PRNG core.  
 These can be used to validate design performance against your own results.
 
-Note:
-The project has been fully designed, synthesized, and simulated, but on-board testing was not performed due to the absence of physical FPGA hardware.
+---
+
+**Note:**  
+The project has been **fully designed, synthesized, and simulated**, but **on-board testing was not performed** due to the absence of physical FPGA hardware.
