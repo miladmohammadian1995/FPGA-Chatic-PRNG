@@ -1,0 +1,49 @@
+# Vivado / Vitis / HLS common build outputs
+*.jou
+*.log
+*.str
+*.wdb
+*.zip
+*.gz
+*.tmp
+*.cache
+*.bak
+*.dmp
+*.bin
+
+# Vivado projects
+*.xpr
+*.xsa
+*.xise
+*.xmsgs/
+.runs/
+.sim/
+.cache/
+.hw/
+.sdk/
+.ip_user_files/
+.gen/
+.srcs/sources_1/bd/*/ip/*/*.dcp
+.srcs/sources_1/bd/*/ip/*/*.xml
+
+# HLS
+solution*/syn/
+solution*/sim/
+solution*/impl/
+solution*/.autopilot/
+.apcc_db/
+
+# Waveforms & sim outputs
+*.wcfg
+*.vcd
+*.vpd
+
+# User/editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Keep reports, sources, bd, and images you explicitly track
+# (Your repo keeps: .bd, .vhd, .v/.sv you added, .rpt, images, pdf)
